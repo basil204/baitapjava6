@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+  <body>
+    <div th:fragment="menu">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/home/index}">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a th:href="@{/home/index}">Home</a></li>
+
+            <!-- Conditional rendering based on authentication status -->
+            <th:block sec:authorize="isAuthenticated()">
+              <li><a th:href="@{/security/logoff}">Sign Out</a></li>
+              <li><a th:href="@{/order/list}">Your Orders</a></li>
+              <li sec:authorize="hasRole('STAF') or hasRole('DIRE')">
+                <a th:href="@{/admin/home}">Admin Panel</a>
+              </li>
+            </th:block>
+            <th:block sec:authorize="!isAuthenticated()">
+              <li><a th:href="@{/security/login/form}">Log In</a></li>
+            </th:block>
+          </ul>
+          <ul
+            sec:authorize="isAuthenticated()"
+            class="nav navbar-nav navbar-right"
+          >
+            <li>
+              <a href="#"
+                >Welcome [[${#authentication.getPrincipal().username}]]</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

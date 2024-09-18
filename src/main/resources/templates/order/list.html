@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+        th:replace="~{/layout/index :: dynamic(~{::main})}"
+>
+<body>
+<main>
+    <div class="panel panel-primary">
+        <div class="panel-heading"> YOUR ORDERS PURCHASED</div>
+        <table class="table">
+            <tr>
+                <td>No.</td>
+                <td>Order No.</td>
+                <td>Order Date</td>
+                <td>Shipping Address</td>
+                <td></td>
+            </tr>
+            <tbody>
+            <tr th:each="order,stare:${orders}">
+                <td>[[${stare.index}]]</td>
+                <td>[[${order.id}]]</td>
+                <td>[[${order.createDate}]]</td>
+                <td>[[${order.address}]]</td>
+                <td>
+                    <a th:href="@{|/order/detail/${order.id}|}" class="btn btn-default">
+                        <b class="glyphicon glyphicon-search"></b>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+</main>
+</body>
+</html>

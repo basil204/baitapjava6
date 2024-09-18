@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="adminApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 3 with AngularJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js"></script>
+</head>
+<body class="container">
+<header class="row">
+    <h2 class="alert alert-success">Website Administration</h2>
+</header>
+<div class="row">
+    <nav class="navbar navbar-inverse" style="font-variant: small-caps;">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/#">Home</a></li>
+                <li><a href="#!product">Products</a></li>
+                <li><a href="#!authorize">Authorizing</a></li>
+                <li><a href="/security/logoff">Sign Out</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<main class="row">
+    <div ng-view></div>
+</main>
+<footer class="panel panel-default">
+    <div class="panel-body text-center">
+        <h3>FPT Polytechnic &copy; 2024</h3>
+    </div>
+</footer>
+
+<!-- AngularJS and application scripts -->
+<script src="/assets/admin/admin-app.js"></script>
+<script src="/assets/admin/product/product-ctrl.js"></script>
+<script src="/assets/admin/authority/authority-ctrl.js"></script>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
