@@ -4,8 +4,9 @@ app.controller("productCtrl", function ($scope, $http) {
     $scope.form = {};
 
     $scope.initialize = function () {
+        $scope.reset()
         // Load data product
-        $http.get("/rest/products").then((resp) => {
+        $http.get("/rest/products/all").then((resp) => {
             $scope.items = resp.data;
             $scope.items.forEach((item) => {
                 item.createDate = new Date(item.createDate);
@@ -129,4 +130,5 @@ app.controller("productCtrl", function ($scope, $http) {
     };
 
     $scope.initialize();
+    introJs().start();
 });
